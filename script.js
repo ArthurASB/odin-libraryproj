@@ -12,7 +12,6 @@ function Book(title, author, read, pages, ID) {
 	this.ID = ID;
 }
 
-//ligar essa função ao botão de submit para enviar o livro pra base de dados
 function addBooktoLibrary (bktitle, bkauthor, bkstatus, bkpages) {
     const bookID = crypto.randomUUID();
 	const newBook = new Book (bktitle, bkauthor, bkstatus, bkpages, bookID);
@@ -20,13 +19,35 @@ function addBooktoLibrary (bktitle, bkauthor, bkstatus, bkpages) {
 }
 
 function displayLibrary () {
-	//criar cards na página com informações dos livros criados
+	const container = document.querySelector(".card-area");
+	container.innerHTML = "";
 	for (const book of myLibrary) {
-		console.log(book);
+		const newDiv = document.createElement("div");
+		newDiv.classList.add("card"); 
+
+		const cardtitle = document.createElement("h3");
+		cardtitle.textContent = book.title;
+		newDiv.appendChild(cardtitle);
+
+		const cardauthor = document.createElement("p");
+		cardauthor.textContent = `Author: ${book.author}`;
+		newDiv.appendChild(cardauthor);
+
+		const cardpages = document.createElement("p");
+		cardpages.textContent = `Pages: ${book.pages}`;
+		newDiv.appendChild(cardpages);
+
+		const cardstatus = document.createElement("p");
+		cardstatus.textContent = `Status: ${book.read ? "Read" : "Not Read"}`;
+		newDiv.appendChild(cardstatus);
+
+		container.appendChild(newDiv);
 	}
 }
 
 const form = document.querySelector("#book-form");
+
+
 form.addEventListener ("submit", (event) => {
 	event.preventDefault();
 	const bktitle = document.getElementById("book-title").value;
@@ -34,5 +55,6 @@ form.addEventListener ("submit", (event) => {
 	const bkpages = document.getElementById("book-pages").value;
 	const isRead = document.getElementById("book-status").checked;
 	addBooktoLibrary(bktitle, bkauthor, isRead, bkpages);
+	displayLibrary();
 	form.reset();
 });
