@@ -5,8 +5,10 @@
     border: 1px solid lightgrey;
     border-radius: 10px;
     padding: 5px;
-    width: 70%;
+    width: 1000px;
+
 }
+
 
 #book-form > * {
     margin: 3px;
@@ -18,11 +20,18 @@ body {
 }
 
 .card-area {
-    width: 1vw;
+    max-width: 100%;
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .card {
-    background-color: aliceblue;
+    background-color: lightblue;
+    color: darkslategrey;
+    margin: 10px;
+    padding: 5px 15px;
+    min-width: 250px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
 }
