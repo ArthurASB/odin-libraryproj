@@ -1,0 +1,14 @@
+#book-form {
+    display: flex;
+    justify-content:space-around;
+    background-color:azure;
+}
+
+#book-form > * {
+    margin: 5px;
+}
+
+body {
+    display: grid;
+    grid-row: 1fr 10fr;
+}
